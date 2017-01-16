@@ -349,7 +349,7 @@
 Hadoop Version: 2.7.2
 </code></pre></blockquote>
 <h2 id="1-配置Mac-OS自身ssh环境"><a href="#1-配置Mac-OS自身ssh环境" class="headerlink" title="1. 配置Mac OS自身ssh环境"></a>1. 配置Mac OS自身ssh环境</h2><p>配置ssh环境,在终端中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh localhost</div></pre></td></tr></table></figure></p>
-<p><img src="/images/Screen Shot 2017-01-16 at 12.56.14 PM.png =20x20" alt=""><br>是因为之前做了ssh-key免登录的处理,所以现在一输入就直接有了。</p>
+<p><img src="/images/Screen Shot 2017-01-16 at 12.56.14 PM.png =100x100" alt=""><br>是因为之前做了ssh-key免登录的处理,所以现在一输入就直接有了。</p>
 <p><strong>Tips: 关于如何做免登录处理</strong></p>
 <blockquote>
 <ul>
@@ -370,7 +370,7 @@ Hadoop Version: 2.7.2
 <h3 id="开启NameNode和DataNode守护进程"><a href="#开启NameNode和DataNode守护进程" class="headerlink" title="开启NameNode和DataNode守护进程"></a>开启NameNode和DataNode守护进程</h3><p>使用如下命令开启：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sbin/start-dfs.sh</div></pre></td></tr></table></figure><br><img src="/images/Screen Shot 2017-01-16 at 1.33.37 PM.png" alt=""></p>
 <h3 id="查看进程信息"><a href="#查看进程信息" class="headerlink" title="查看进程信息"></a>查看进程信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jps</div></pre></td></tr></table></figure>
 <p><img src="/images/Screen Shot 2017-01-16 at 1.34.57 PM.png" alt=""></p>
-<h3 id="查看Web-UI"><a href="#查看Web-UI" class="headerlink" title="查看Web UI"></a>查看Web UI</h3><p>在浏览器中输入:<a href="http://localhost:50070，即可查看相关信息，截图如下" target="_blank" rel="external">http://localhost:50070，即可查看相关信息，截图如下</a>:</p>
+<h3 id="查看Web-UI"><a href="#查看Web-UI" class="headerlink" title="查看Web UI"></a>查看Web UI</h3><p>在浏览器中输入: <a href="http://localhost:50070，" target="_blank" rel="external">http://localhost:50070，</a> 即可查看相关信息，截图如下:</p>
 <p><img src="/images/Screen Shot 2017-01-16 at 1.36.18 PM.png" alt=""></p>
 <p>此时，hadoop伪分布式集成环境已经搭建完成,接下来运行一下WordCount例子。</p>
 <h2 id="6-运行WordCount"><a href="#6-运行WordCount" class="headerlink" title="6. 运行WordCount"></a>6. 运行WordCount</h2><p>这里就用blog处女作“听说这是成为技术界网红的第一步.md”    </p>
@@ -385,6 +385,10 @@ Hadoop Version: 2.7.2
 </li>
 </ol>
 <p>Finally! 可以好好耍Hadoop了！</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href="http://hustlijian.github.io/tutorial/2015/06/19/Hadoop入门使用.html" target="_blank" rel="external">http://hustlijian.github.io/tutorial/2015/06/19/Hadoop入门使用.html</a></li>
+<li><a href="http://kiritor.github.io/2016/04/24/Hadoop-install/" target="_blank" rel="external">http://kiritor.github.io/2016/04/24/Hadoop-install/</a></li>
+</ol>
 
           
         
