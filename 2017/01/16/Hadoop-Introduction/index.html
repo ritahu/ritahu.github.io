@@ -110,13 +110,13 @@ Hadoop Ecosystem各个部分
 HDFS(Hadoop Distributed File System)
 MapReduce
 Hive: Apache Hive is a data warehouse infrastructure built on top of Hadoop">
-<meta property="og:image" content="http://yoursite.com/Users/user/Desktop/Screen Shot 2017-01-16 at 12.56.14 PM.png">
-<meta property="og:image" content="http://yoursite.com/Users/user/Desktop/Screen Shot 2017-01-16 at 1.33.37 PM.png">
-<meta property="og:image" content="http://yoursite.com/Users/user/Desktop/Screen Shot 2017-01-16 at 1.34.57 PM.png">
-<meta property="og:image" content="http://yoursite.com/Users/user/Desktop/Screen Shot 2017-01-16 at 1.36.18 PM.png">
-<meta property="og:image" content="http://yoursite.com/Users/user/Desktop/Screen Shot 2017-01-16 at 1.43.48 PM.png">
+<meta property="og:image" content="http://yoursite.com/images/Screen Shot 2017-01-16 at 12.56.14 PM.png">
+<meta property="og:image" content="http://yoursite.com/images/Screen Shot 2017-01-16 at 1.33.37 PM.png">
+<meta property="og:image" content="http://yoursite.com/images/Screen Shot 2017-01-16 at 1.34.57 PM.png">
+<meta property="og:image" content="http://yoursite.com/images/Screen Shot 2017-01-16 at 1.36.18 PM.png">
+<meta property="og:image" content="http://yoursite.com/images/Screen Shot 2017-01-16 at 1.43.48 PM.png">
 <meta property="og:image" content="http://yoursite.com/Users/user/Desktop/Screen Shot 2017-01-16 at 1.54.13 PM.png">
-<meta property="og:updated_time" content="2017-01-16T20:49:10.000Z">
+<meta property="og:updated_time" content="2017-01-16T20:54:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 2.7.2 Installation on Mac">
 <meta name="twitter:description" content="Hadoop Ecosystem中最主要的两个部分
@@ -130,7 +130,7 @@ Hadoop Ecosystem各个部分
 HDFS(Hadoop Distributed File System)
 MapReduce
 Hive: Apache Hive is a data warehouse infrastructure built on top of Hadoop">
-<meta name="twitter:image" content="http://yoursite.com/Users/user/Desktop/Screen Shot 2017-01-16 at 12.56.14 PM.png">
+<meta name="twitter:image" content="http://yoursite.com/images/Screen Shot 2017-01-16 at 12.56.14 PM.png">
 
 
 
@@ -376,10 +376,11 @@ Hive: Apache Hive is a data warehouse infrastructure built on top of Hadoop">
 </ol>
 </blockquote>
 <h1 id="Environment-Introduction"><a href="#Environment-Introduction" class="headerlink" title="Environment Introduction"></a>Environment Introduction</h1><blockquote>
-<p>Operation System: Mac OS X 10.12<br>Hadoop Version: 2.7.2</p>
-</blockquote>
+<pre><code>Operation System: Mac OS X 10.12 
+Hadoop Version: 2.7.2
+</code></pre></blockquote>
 <h2 id="1-配置Mac-OS自身ssh环境"><a href="#1-配置Mac-OS自身ssh环境" class="headerlink" title="1. 配置Mac OS自身ssh环境"></a>1. 配置Mac OS自身ssh环境</h2><p>配置ssh环境,在终端中输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh localhost</div></pre></td></tr></table></figure></p>
-<p><img src="/Users/user/Desktop/Screen Shot 2017-01-16 at 12.56.14 PM.png" alt=""><br>是因为之前做了ssh-key免登录的处理,所以现在一输入就直接有了。</p>
+<p><img src="/images/Screen Shot 2017-01-16 at 12.56.14 PM.png" alt=""><br>是因为之前做了ssh-key免登录的处理,所以现在一输入就直接有了。</p>
 <blockquote>
 <p><strong>Tips: 关于如何做免登录处理</strong></p>
 <ul>
@@ -396,12 +397,12 @@ Hive: Apache Hive is a data warehouse infrastructure built on top of Hadoop">
 <p>2) hdfs-site.xml<br>该配置文件制定了HDFS的默认参数及副本数，因为仅运行在一个节点上，所以这里的副本数为1<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</div><div class="line">        &lt;value&gt;file:/Users/user/dev/hadoop/hadoop-2.7.2/tmp/hdfs/name&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</div><div class="line">        &lt;value&gt;file:/Users/user/dev/hadoop/hadoop-2.7.2/tmp/hdfs/data&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.replication&lt;/name&gt;</div><div class="line">        &lt;value&gt;1&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">        &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;</div><div class="line">        &lt;value&gt;localhost:9001&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">    &lt;property&gt;</div><div class="line">      &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;</div><div class="line">      &lt;value&gt;true&lt;/value&gt;</div><div class="line">    &lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure>      </p>
 <p>3) mapred-site.xml.template<br>该配置文件制定了JobTracker的主机名与端口<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;configuration&gt;</div><div class="line">	&lt;property&gt;</div><div class="line">	&lt;name&gt;mapred.job.tracker&lt;/name&gt;</div><div class="line">	&lt;value&gt;localhost:9001&lt;/value&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/configuration&gt;</div></pre></td></tr></table></figure></p>
 <h2 id="5-运行Hadoop"><a href="#5-运行Hadoop" class="headerlink" title="5. 运行Hadoop"></a>5. 运行Hadoop</h2><h3 id="初始化HDFS"><a href="#初始化HDFS" class="headerlink" title="初始化HDFS"></a>初始化HDFS</h3><p>在Hadoop主目录~/dev/hadoop/hadoop-2.7.2下输入命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hdfs namenode -format</div></pre></td></tr></table></figure></p>
-<p>结果如下<br>![](/Users/user/Desktop/Screen Shot 2017-01-16 at 1.31.32 PM.png）<br>说明初始化成功啦！</p>
-<h3 id="开启NameNode和DataNode守护进程"><a href="#开启NameNode和DataNode守护进程" class="headerlink" title="开启NameNode和DataNode守护进程"></a>开启NameNode和DataNode守护进程</h3><p>使用如下命令开启：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sbin/start-dfs.sh</div></pre></td></tr></table></figure><br><img src="/Users/user/Desktop/Screen Shot 2017-01-16 at 1.33.37 PM.png" alt=""></p>
+<p>结果如下<br>![](/images/Screen Shot 2017-01-16 at 1.31.32 PM.png）<br>说明初始化成功啦！</p>
+<h3 id="开启NameNode和DataNode守护进程"><a href="#开启NameNode和DataNode守护进程" class="headerlink" title="开启NameNode和DataNode守护进程"></a>开启NameNode和DataNode守护进程</h3><p>使用如下命令开启：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sbin/start-dfs.sh</div></pre></td></tr></table></figure><br><img src="/images/Screen Shot 2017-01-16 at 1.33.37 PM.png" alt=""></p>
 <h3 id="查看进程信息"><a href="#查看进程信息" class="headerlink" title="查看进程信息"></a>查看进程信息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jps</div></pre></td></tr></table></figure>
-<p><img src="/Users/user/Desktop/Screen Shot 2017-01-16 at 1.34.57 PM.png" alt=""></p>
+<p><img src="/images/Screen Shot 2017-01-16 at 1.34.57 PM.png" alt=""></p>
 <h3 id="查看Web-UI"><a href="#查看Web-UI" class="headerlink" title="查看Web UI"></a>查看Web UI</h3><p>在浏览器中输入:<a href="http://localhost:50070，即可查看相关信息，截图如下" target="_blank" rel="external">http://localhost:50070，即可查看相关信息，截图如下</a>:</p>
-<p><img src="/Users/user/Desktop/Screen Shot 2017-01-16 at 1.36.18 PM.png" alt=""></p>
+<p><img src="/images/Screen Shot 2017-01-16 at 1.36.18 PM.png" alt=""></p>
 <p>此时，hadoop伪分布式集成环境已经搭建完成,接下来运行一下WordCount例子。</p>
 <h2 id="6-运行WordCount"><a href="#6-运行WordCount" class="headerlink" title="6. 运行WordCount"></a>6. 运行WordCount</h2><p>这里就用blog处女作“听说这是成为技术界网红的第一步.md”    </p>
 <ol>
@@ -409,7 +410,7 @@ Hive: Apache Hive is a data warehouse infrastructure built on top of Hadoop">
 </li>
 <li><p>上传测试文件，命令如下:bin/hdfs dfs -put ~/Desktop/听说这是成为技术界网红的第一步.md /test/，可使用之前命令查看是否上传成功。<br>Notes: ls: `.’: No such file or directory   </p>
 </li>
-<li><p>运行wordcount，命令如下:bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /test/听说这是成为技术界网红的第一步.md /test/out，运行完成后，在/test目录下生成名为out的目录，其内容如下所示:<br><img src="/Users/user/Desktop/Screen Shot 2017-01-16 at 1.43.48 PM.png" alt=""><br>表示已经运行成功，结果存放在part-r-00000文件中</p>
+<li><p>运行wordcount，命令如下:bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /test/听说这是成为技术界网红的第一步.md /test/out，运行完成后，在/test目录下生成名为out的目录，其内容如下所示:<br><img src="/images/Screen Shot 2017-01-16 at 1.43.48 PM.png" alt=""><br>表示已经运行成功，结果存放在part-r-00000文件中</p>
 </li>
 <li><p>使用命令:bin/hadoop fs -cat /test/out/part-r-00000 查看结果为如下图所示:<br><img src="/Users/user/Desktop/Screen Shot 2017-01-16 at 1.54.13 PM.png" alt=""></p>
 </li>
