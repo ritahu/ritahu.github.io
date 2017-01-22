@@ -251,6 +251,217 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/21/Hadoop-Notes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rita Hu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/a1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Rui's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Rui's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/21/Hadoop-Notes/" itemprop="url">
+                  Hadoop Notes
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-21T16:10:46-06:00">
+                2017-01-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Skills/" itemprop="url" rel="index">
+                    <span itemprop="name">Skills</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Objectives"><a href="#Objectives" class="headerlink" title="Objectives"></a>Objectives</h1><blockquote>
+<ol>
+<li>Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目</li>
+<li>机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么</li>
+<li>找到data science常见面试题集</li>
+</ol>
+</blockquote>
+<h1 id="What-Is-Hadoop"><a href="#What-Is-Hadoop" class="headerlink" title="What Is Hadoop?"></a>What Is Hadoop?</h1><blockquote>
+<ul>
+<li>Not a single product</li>
+<li>A collection of applications</li>
+<li>A framework or platform</li>
+<li><p>Consists of several modules </p>
+</li>
+<li><p>HDFS</p>
+</li>
+<li>MapReduce</li>
+<li>Pig</li>
+<li>Hive</li>
+<li>Additional Components</li>
+</ul>
+</blockquote>
+<p><img src="/images/Big+Data+and+Hadoop+Training+Hadoop+Components+and+Architecture_1.pngg" alt=""><br>Image Credit: mssqpltips.com</p>
+<p>Hadoop框架中最核心的设计就是：MapReduce和HDFS</p>
+<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><p>The Hadoop Distributed File System, used to store many files across many computers.<br>HDFS是分布式计算的存储基石<br><strong>HDFS</strong></p>
+<blockquote>
+<ol>
+<li>NameNode：管理者，管理文件系统的命名空间、集群配置信息和存储块的复制</li>
+<li>DataNode: 文件存储的基本单元，将Block存储在本地文件系统中，保存了Block的Meta-data，同时周期性地将所有存在的Block信息发送给NameNode</li>
+<li>Client： 获取分布式文件系统文件的应用程序</li>
+</ol>
+</blockquote>
+<p><strong>三者之间的关系</strong><br>文件写入</p>
+<blockquote>
+<ol>
+<li>Client向NameNode发起文件写入的请求</li>
+<li>NameNode根据文件大小和文件块配置情况，返回给Client它所管理部分DataNode的信息</li>
+<li>Client将文件划分为多个Block，根据DataNode的地址信息，按顺序写入到每一个DataNode块中</li>
+</ol>
+</blockquote>
+<p>这就好像我要给xx公司送货，我就给总部提出送货申请，总部就会把下面厂的信息告诉我，然后我把这些货一个个给那些厂送过去。</p>
+<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>MapReduce “任务的分解与结果的汇总”<br>Map splits a task into pieces. 将一个任务分解成为多个任务<br>Reduce combines the output. 将分解后多任务处理的结果汇总起来</p>
+<p><strong>Notes:</strong> The Original MapReduce program has been replaced by YARN(Yet Another Resource Negotiator).</p>
+<h2 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h2><h2 id="Pig"><a href="#Pig" class="headerlink" title="Pig"></a>Pig</h2><blockquote>
+<ul>
+<li>Writes MapReduce programs</li>
+<li>Uses the Pig Latin language</li>
+</ul>
+</blockquote>
+<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><blockquote>
+<ul>
+<li>Summarizes queries</li>
+<li>Analyzes data</li>
+<li>Uses the HiveQL language</li>
+</ul>
+</blockquote>
+<h2 id="Additional-Components"><a href="#Additional-Components" class="headerlink" title="Additional Components"></a>Additional Components</h2><blockquote>
+<ul>
+<li>HBase: a no SQL database</li>
+<li>Storm: allows the processing of streaming data in Hadoop</li>
+<li>Spark: allows in memory processing (much faster than on disk processing</li>
+<li>Giraph: for social network data </li>
+</ul>
+</blockquote>
+<p>使用场景：海量数据的分析</p>
+<h1 id="What-to-do-next"><a href="#What-to-do-next" class="headerlink" title="What to do next?"></a>What to do next?</h1><ol>
+<li>看Hadoop熟悉Pig和Hive语法</li>
+</ol>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li><a href="http://www.infoq.com/cn/articles/hadoop-intro" target="_blank" rel="external">http://www.infoq.com/cn/articles/hadoop-intro</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/16/Hadoop-Introduction/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -580,12 +791,19 @@ Hadoop Version: 2.7.2
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
           
 
           
