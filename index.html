@@ -251,6 +251,138 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/23/MapReduce应用实例/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rita Hu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/a1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Rui's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Rui's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/23/MapReduce应用实例/" itemprop="url">
+                  MapReduce应用实例
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T23:31:45-06:00">
+                2017-01-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="单词计数"><a href="#单词计数" class="headerlink" title="单词计数"></a>单词计数</h1><p>计算出文件中各个单词的频数 Word Count</p>
+<blockquote>
+<p>Map阶段： 由输入数据到单词切分<br>shuffle阶段： 完成相同单词的聚集和分发工作<br>reduce阶段： 接收所有单词并计算其频数</p>
+</blockquote>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由于Mapreduce中传递的数据都是<key,value>形式的，并且shuffle排序聚集分发都是按照key值进行的，所以将map的输出设计成由word作为key，1作为value的形式，它表示单词word出现了一次（map的输入采用Hadoop默认的输入方式：文件一行作为value，行号作为key）。reduce的输入为map输出聚集后的结果，即<key,value-list>，具体到这个实例就是<word,{1,1,1,1…}>，reduce的输出会设计成与map输出相同的形式，只是后面的数字不是1，而是对应频数。<br>WordCount程序在map阶段接受输入的<key,value>（key是当前输入的行号，value是对应行的内容），然后对此行内容进行切词，每切一个词下来就将其组织成<word,1>的形式输出。在reduce阶段，TaskTracker会接收到<word,{1,1,1,1…}>形式的数据，reduce每接收一个就+1，最后组织成<word,sum>直接输出。</word,sum></word,{1,1,1,1…}></word,1></key,value></word,{1,1,1,1…}></key,value-list></key,value></p>
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><p>运行条件： 将WordCount.java文件放在Hadoop安装目录下，并在目录下创建输入目录input，目录下有输入文件file。<br>命令行：<br>1）在集群上创建输入文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop fs -mkdir input</div></pre></td></tr></table></figure></p>
+<p>2) 上传本地目录input下名为file的文件到集群上的input目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop fs -put input/file input</div></pre></td></tr></table></figure></p>
+<p>3) 编译WordCount.java程序，将结果放入当前目录的WordCount目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ javac -classpath hadoop-0.20.2-core.jar:</div><div class="line">$ lib/commons-cli-1.2.jar -d WordCount WordCount.java</div></pre></td></tr></table></figure></p>
+<p>4）将编译结果打成jar包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jar -cvf wordcount.jar -C WordCount</div></pre></td></tr></table></figure></p>
+<p>5) 在集群上运行WordCount程序，以input目录作为输入目录，output目录作为输出目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop jar wordcount.jar WordCount input output</div></pre></td></tr></table></figure></p>
+<p>6) 查看输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop fs -cat output/part-r-00000</div></pre></td></tr></table></figure></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>hadoop       1<br>hello        3<br>mapreduce    1<br>world        1</p>
+<h1 id="数据去重"><a href="#数据去重" class="headerlink" title="数据去重"></a>数据去重</h1><p>统计大数据集上的数据种类个数、从网站日志中计算访问地等都涉及数据去重。</p>
+<p>##思路<br>reduce的输入应该以数据作为key，而对value-list则没有要求。当reduce接收到一个<key,value-list>时就直接将key复制到输出的key中，并将value设置成空值。所以，map输出数据的key为数据，而在这个实例中每个数据代表输入文件中的一行内容，所以map阶段要完成的任务就是在采用Hadoop默认的作业输入方式之后，将value设置成key，并直接输出（输出中的value任意）。reduce阶段不会管每个key有多少个value，它直接将输入的key复制为输出的key，并输出就可以了。</key,value-list></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h1 id="单表关联"><a href="#单表关联" class="headerlink" title="单表关联"></a>单表关联</h1><h1 id="多表关联"><a href="#多表关联" class="headerlink" title="多表关联"></a>多表关联</h1>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/22/Machine-Learning-Algorithm/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1222,7 +1354,7 @@ Hadoop Version: 2.7.2
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

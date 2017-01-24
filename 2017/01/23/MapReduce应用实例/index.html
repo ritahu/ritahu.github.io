@@ -84,48 +84,28 @@
 
 
 
-<meta name="description" content="Objectives
+<meta name="description" content="单词计数计算出文件中各个单词的频数 Word Count
 
-Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目
-机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么
-找到data science常见面试题集
+Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词的聚集和分发工作reduce阶段： 接收所有单词并计算其频数
 
-
-What Is Hadoop?
-
-Not a single product
-A">
+思路由于Mapreduce中传递的数据都是形式的，并且shuffle排序聚集分发都是按照key值进行的，所以将map的输出设计成由word作为key，1作为value的形式，它表示单词word出现了一次（ma">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hadoop Notes">
-<meta property="og:url" content="http://yoursite.com/2017/01/21/Hadoop-Notes/index.html">
+<meta property="og:title" content="MapReduce应用实例">
+<meta property="og:url" content="http://yoursite.com/2017/01/23/MapReduce应用实例/index.html">
 <meta property="og:site_name" content="Rui's Blog">
-<meta property="og:description" content="Objectives
+<meta property="og:description" content="单词计数计算出文件中各个单词的频数 Word Count
 
-Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目
-机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么
-找到data science常见面试题集
+Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词的聚集和分发工作reduce阶段： 接收所有单词并计算其频数
 
-
-What Is Hadoop?
-
-Not a single product
-A">
-<meta property="og:image" content="http://yoursite.com/images/Big+Data+and+Hadoop+Training+Hadoop+Components+and+Architecture_1.png">
-<meta property="og:updated_time" content="2017-01-22T00:04:32.000Z">
+思路由于Mapreduce中传递的数据都是形式的，并且shuffle排序聚集分发都是按照key值进行的，所以将map的输出设计成由word作为key，1作为value的形式，它表示单词word出现了一次（ma">
+<meta property="og:updated_time" content="2017-01-24T05:32:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hadoop Notes">
-<meta name="twitter:description" content="Objectives
+<meta name="twitter:title" content="MapReduce应用实例">
+<meta name="twitter:description" content="单词计数计算出文件中各个单词的频数 Word Count
 
-Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目
-机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么
-找到data science常见面试题集
+Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词的聚集和分发工作reduce阶段： 接收所有单词并计算其频数
 
-
-What Is Hadoop?
-
-Not a single product
-A">
-<meta name="twitter:image" content="http://yoursite.com/images/Big+Data+and+Hadoop+Training+Hadoop+Components+and+Architecture_1.png">
+思路由于Mapreduce中传递的数据都是形式的，并且shuffle排序聚集分发都是按照key值进行的，所以将map的输出设计成由word作为key，1作为value的形式，它表示单词word出现了一次（ma">
 
 
 
@@ -153,13 +133,13 @@ A">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/21/Hadoop-Notes/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/23/MapReduce应用实例/"/>
 
 
 
 
 
-  <title> Hadoop Notes | Rui's Blog </title>
+  <title> MapReduce应用实例 | Rui's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +262,7 @@ A">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/21/Hadoop-Notes/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/23/MapReduce应用实例/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Rita Hu">
@@ -306,7 +286,7 @@ A">
             
             
               
-                Hadoop Notes
+                MapReduce应用实例
               
             
           </h1>
@@ -321,8 +301,8 @@ A">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-21T16:10:46-06:00">
-                2017-01-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-23T23:31:45-06:00">
+                2017-01-23
               </time>
             
 
@@ -331,28 +311,6 @@ A">
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Skills/" itemprop="url" rel="index">
-                    <span itemprop="name">Skills</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -379,81 +337,21 @@ A">
       
 
       
-        <h1 id="Objectives"><a href="#Objectives" class="headerlink" title="Objectives"></a>Objectives</h1><blockquote>
-<ol>
-<li>Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目</li>
-<li>机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么</li>
-<li>找到data science常见面试题集</li>
-</ol>
-</blockquote>
-<h1 id="What-Is-Hadoop"><a href="#What-Is-Hadoop" class="headerlink" title="What Is Hadoop?"></a>What Is Hadoop?</h1><blockquote>
-<ul>
-<li>Not a single product</li>
-<li>A collection of applications</li>
-<li>A framework or platform</li>
-<li>Consists of several modules </li>
-</ul>
-</blockquote>
-<p><strong>Components</strong></p>
+        <h1 id="单词计数"><a href="#单词计数" class="headerlink" title="单词计数"></a>单词计数</h1><p>计算出文件中各个单词的频数 Word Count</p>
 <blockquote>
-<ul>
-<li>HDFS</li>
-<li>MapReduce</li>
-<li>Pig</li>
-<li>Hive</li>
-<li>Additional Components</li>
-</ul>
+<p>Map阶段： 由输入数据到单词切分<br>shuffle阶段： 完成相同单词的聚集和分发工作<br>reduce阶段： 接收所有单词并计算其频数</p>
 </blockquote>
-<p><img src="/images/Big+Data+and+Hadoop+Training+Hadoop+Components+and+Architecture_1.png" alt=""><br>Image Credit: mssqpltips.com</p>
-<p>Hadoop框架中最核心的设计就是：MapReduce和HDFS</p>
-<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><p>The Hadoop Distributed File System, used to store many files across many computers.<br>HDFS是分布式计算的存储基石<br><strong>HDFS</strong></p>
-<blockquote>
-<ol>
-<li>NameNode：管理者，管理文件系统的命名空间、集群配置信息和存储块的复制</li>
-<li>DataNode: 文件存储的基本单元，将Block存储在本地文件系统中，保存了Block的Meta-data，同时周期性地将所有存在的Block信息发送给NameNode</li>
-<li>Client： 获取分布式文件系统文件的应用程序</li>
-</ol>
-</blockquote>
-<p><strong>三者之间的关系</strong><br>文件写入</p>
-<blockquote>
-<ol>
-<li>Client向NameNode发起文件写入的请求</li>
-<li>NameNode根据文件大小和文件块配置情况，返回给Client它所管理部分DataNode的信息</li>
-<li>Client将文件划分为多个Block，根据DataNode的地址信息，按顺序写入到每一个DataNode块中</li>
-</ol>
-</blockquote>
-<p>这就好像我要给xx公司送货，我就给总部提出送货申请，总部就会把下面厂的信息告诉我，然后我把这些货一个个给那些厂送过去。</p>
-<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>MapReduce “任务的分解与结果的汇总”<br>Map splits a task into pieces. 将一个任务分解成为多个任务<br>Reduce combines the output. 将分解后多任务处理的结果汇总起来</p>
-<p><strong>Notes:</strong> The Original MapReduce program has been replaced by YARN(Yet Another Resource Negotiator).</p>
-<h2 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h2><h2 id="Pig"><a href="#Pig" class="headerlink" title="Pig"></a>Pig</h2><blockquote>
-<ul>
-<li>Writes MapReduce programs</li>
-<li>Uses the Pig Latin language</li>
-</ul>
-</blockquote>
-<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><blockquote>
-<ul>
-<li>Summarizes queries</li>
-<li>Analyzes data</li>
-<li>Uses the HiveQL language</li>
-</ul>
-</blockquote>
-<h2 id="Additional-Components"><a href="#Additional-Components" class="headerlink" title="Additional Components"></a>Additional Components</h2><blockquote>
-<ul>
-<li>HBase: a no SQL database</li>
-<li>Storm: allows the processing of streaming data in Hadoop</li>
-<li>Spark: allows in memory processing (much faster than on disk processing</li>
-<li>Giraph: for social network data </li>
-</ul>
-</blockquote>
-<p>使用场景：海量数据的分析</p>
-<h1 id="What-to-do-next"><a href="#What-to-do-next" class="headerlink" title="What to do next?"></a>What to do next?</h1><ol>
-<li>看Hadoop熟悉Pig和Hive语法</li>
-</ol>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
-<li><a href="http://www.infoq.com/cn/articles/hadoop-intro" target="_blank" rel="external">http://www.infoq.com/cn/articles/hadoop-intro</a></li>
-</ol>
-
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>由于Mapreduce中传递的数据都是<key,value>形式的，并且shuffle排序聚集分发都是按照key值进行的，所以将map的输出设计成由word作为key，1作为value的形式，它表示单词word出现了一次（map的输入采用Hadoop默认的输入方式：文件一行作为value，行号作为key）。reduce的输入为map输出聚集后的结果，即<key,value-list>，具体到这个实例就是<word,{1,1,1,1…}>，reduce的输出会设计成与map输出相同的形式，只是后面的数字不是1，而是对应频数。<br>WordCount程序在map阶段接受输入的<key,value>（key是当前输入的行号，value是对应行的内容），然后对此行内容进行切词，每切一个词下来就将其组织成<word,1>的形式输出。在reduce阶段，TaskTracker会接收到<word,{1,1,1,1…}>形式的数据，reduce每接收一个就+1，最后组织成<word,sum>直接输出。</word,sum></word,{1,1,1,1…}></word,1></key,value></word,{1,1,1,1…}></key,value-list></key,value></p>
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><p>运行条件： 将WordCount.java文件放在Hadoop安装目录下，并在目录下创建输入目录input，目录下有输入文件file。<br>命令行：<br>1）在集群上创建输入文件夹<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop fs -mkdir input</div></pre></td></tr></table></figure></p>
+<p>2) 上传本地目录input下名为file的文件到集群上的input目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop fs -put input/file input</div></pre></td></tr></table></figure></p>
+<p>3) 编译WordCount.java程序，将结果放入当前目录的WordCount目录下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ javac -classpath hadoop-0.20.2-core.jar:</div><div class="line">$ lib/commons-cli-1.2.jar -d WordCount WordCount.java</div></pre></td></tr></table></figure></p>
+<p>4）将编译结果打成jar包：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ jar -cvf wordcount.jar -C WordCount</div></pre></td></tr></table></figure></p>
+<p>5) 在集群上运行WordCount程序，以input目录作为输入目录，output目录作为输出目录：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop jar wordcount.jar WordCount input output</div></pre></td></tr></table></figure></p>
+<p>6) 查看输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop fs -cat output/part-r-00000</div></pre></td></tr></table></figure></p>
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>hadoop       1<br>hello        3<br>mapreduce    1<br>world        1</p>
+<h1 id="数据去重"><a href="#数据去重" class="headerlink" title="数据去重"></a>数据去重</h1><p>统计大数据集上的数据种类个数、从网站日志中计算访问地等都涉及数据去重。</p>
+<p>##思路<br>reduce的输入应该以数据作为key，而对value-list则没有要求。当reduce接收到一个<key,value-list>时就直接将key复制到输出的key中，并将value设置成空值。所以，map输出数据的key为数据，而在这个实例中每个数据代表输入文件中的一行内容，所以map阶段要完成的任务就是在采用Hadoop默认的作业输入方式之后，将value设置成key，并直接输出（输出中的value任意）。reduce阶段不会管每个key有多少个value，它直接将输入的key复制为输出的key，并输出就可以了。</key,value-list></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h1 id="单表关联"><a href="#单表关联" class="headerlink" title="单表关联"></a>单表关联</h1><h1 id="多表关联"><a href="#多表关联" class="headerlink" title="多表关联"></a>多表关联</h1>
       
     </div>
 
@@ -485,8 +383,8 @@ A">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/16/Hadoop-Introduction/" rel="next" title="Hadoop 2.7.2 Installation on Mac">
-                <i class="fa fa-chevron-left"></i> Hadoop 2.7.2 Installation on Mac
+              <a href="/2017/01/22/Machine-Learning-Algorithm/" rel="next" title="Machine Learning Algorithm">
+                <i class="fa fa-chevron-left"></i> Machine Learning Algorithm
               </a>
             
           </div>
@@ -494,10 +392,6 @@ A">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/22/Naive-Bayes/" rel="prev" title="Naive Bayes">
-                Naive Bayes <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -620,7 +514,7 @@ A">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Objectives"><span class="nav-number">1.</span> <span class="nav-text">Objectives</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Hadoop"><span class="nav-number">2.</span> <span class="nav-text">What Is Hadoop?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS"><span class="nav-number">2.1.</span> <span class="nav-text">HDFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce"><span class="nav-number">2.2.</span> <span class="nav-text">MapReduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN"><span class="nav-number">2.3.</span> <span class="nav-text">YARN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pig"><span class="nav-number">2.4.</span> <span class="nav-text">Pig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive"><span class="nav-number">2.5.</span> <span class="nav-text">Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additional-Components"><span class="nav-number">2.6.</span> <span class="nav-text">Additional Components</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-to-do-next"><span class="nav-number">3.</span> <span class="nav-text">What to do next?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单词计数"><span class="nav-number">1.</span> <span class="nav-text">单词计数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行"><span class="nav-number">1.2.</span> <span class="nav-text">执行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结果"><span class="nav-number">1.3.</span> <span class="nav-text">结果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#数据去重"><span class="nav-number">2.</span> <span class="nav-text">数据去重</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#排序"><span class="nav-number">3.</span> <span class="nav-text">排序</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#单表关联"><span class="nav-number">4.</span> <span class="nav-text">单表关联</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多表关联"><span class="nav-number">5.</span> <span class="nav-text">多表关联</span></a></li></ol></div>
             
 
           </div>
