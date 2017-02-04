@@ -98,7 +98,7 @@ Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词�
 Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词的聚集和分发工作reduce阶段： 接收所有单词并计算其频数
 
 思路由于Mapreduce中传递的数据都是形式的，并且shuffle排序聚集分发都是按照key值进行的，所以将map的输出设计成由word作为key，1作为value的形式，它表示单词word出现了一次（ma">
-<meta property="og:updated_time" content="2017-01-24T15:20:59.000Z">
+<meta property="og:updated_time" content="2017-02-04T04:21:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MapReduce应用实例">
 <meta name="twitter:description" content="单词计数计算出文件中各个单词的频数 Word Count
@@ -312,6 +312,28 @@ Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词�
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -357,7 +379,9 @@ Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词�
 <blockquote>
 <p>如果key为封装int的IntWritable类型，按照数字大小对key排序；<br>封装String的Text类型，按照字典顺序对字符串排序</p>
 </blockquote>
-<h1 id="单表关联"><a href="#单表关联" class="headerlink" title="单表关联"></a>单表关联</h1><h1 id="多表关联"><a href="#多表关联" class="headerlink" title="多表关联"></a>多表关联</h1>
+<h1 id="单表关联"><a href="#单表关联" class="headerlink" title="单表关联"></a>单表关联</h1><p>连接的是左表的parent列和右表的child列，且左表和右表是同一个表。连接结果中除去连接的两列就是所需要的结果。MapReduce的Shuffle过程会将相同的key值放在一起，所以可以将map结果的key值设置成待连接的列，然后列中相同的值就自然会连接在一起了。在map阶段将读入数据分割成child和parent之后，会将parent设置成key，child设置成value进行输出，并作为左表；再反过来做一遍作为右表。为了区分输出中的左右表，需要在输出的value中再加上左右表的信息，如在value的String最开始处加上字符1表示左表，2表示右表。这样在map的结果中就形成了左表右表，shuffle过程中完成连接，reduce接收到连接的结果，其中每个key的value-list就包含了grandchild和grandparent关系。取出每个key的value-list进行解析，将左表中的child放入一个数组，右表中的parent放入一个数组，然后对两个数组求笛卡尔积就是最后的结果了。</p>
+<p><strong>Notes</strong><br>笛卡尔积<br>如果集合X是13个元素的点数集合，而集合Y是4个元素的花色集合，则这两个集合的笛卡儿积是有52个元素的标准扑克牌的集合。</p>
+<h1 id="多表关联"><a href="#多表关联" class="headerlink" title="多表关联"></a>多表关联</h1>
       
     </div>
 
@@ -476,7 +500,7 @@ Map阶段： 由输入数据到单词切分shuffle阶段： 完成相同单词�
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
