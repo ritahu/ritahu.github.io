@@ -366,7 +366,7 @@
 <p>6) 查看输出结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bin/hadoop fs -cat output/part-r-00000</div></pre></td></tr></table></figure></p>
 <h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p>hadoop       1<br>hello        3<br>mapreduce    1<br>world        1</p>
 <h1 id="数据去重"><a href="#数据去重" class="headerlink" title="数据去重"></a>数据去重</h1><p>统计大数据集上的数据种类个数、从网站日志中计算访问地等都涉及数据去重。</p>
-<p>##思路<br>reduce的输入应该以数据作为key，而对value-list则没有要求。当reduce接收到一个<key,value-list>时就直接将key复制到输出的key中，并将value设置成空值。所以，map输出数据的key为数据，而在这个实例中每个数据代表输入文件中的一行内容，所以map阶段要完成的任务就是在采用Hadoop默认的作业输入方式之后，将value设置成key，并直接输出（输出中的value任意）。reduce阶段不会管每个key有多少个value，它直接将输入的key复制为输出的key，并输出就可以了。</key,value-list></p>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><p>reduce的输入应该以数据作为key，而对value-list则没有要求。当reduce接收到一个<key,value-list>时就直接将key复制到输出的key中，并将value设置成空值。所以，map输出数据的key为数据，而在这个实例中每个数据代表输入文件中的一行内容，所以map阶段要完成的任务就是在采用Hadoop默认的作业输入方式之后，将value设置成key，并直接输出（输出中的value任意）。reduce阶段不会管每个key有多少个value，它直接将输入的key复制为输出的key，并输出就可以了。</key,value-list></p>
 <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><p>对输入文件中的数据进行排序。输入文件中的每行内容均为一个数据。要求在输出中每行有两个间隔的数字，其中，第二个代表原始数据，第一个代表这个原始数据在原始数据集中的位次。</p>
 <p>样例输出：<br>1    2<br>2    6<br>3    15</p>
 <p>MapReduce里的默认排序规则是按照key值进行排序的。应该使用封装int的IntWritable型数据结构。在map中将读入的数据转化成IntWritable型，然后作为key值输出（value任意）。reduce拿到<key,value-list>之后，将输入的key作为value输出，并根据value-list中元素的个数决定输出的次数。输出的key是一个全局变量，它统计当前key的位次。<br><strong>Tips</strong></key,value-list></p>
