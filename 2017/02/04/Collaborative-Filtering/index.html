@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hadoop," />
+  <meta name="keywords" content="Machine Learning,Interview,Code Demo," />
 
 
 
@@ -84,48 +84,19 @@
 
 
 
-<meta name="description" content="Objectives
-
-Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目
-机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么
-找到data science常见面试题集
-
-
-What Is Hadoop?
-
-Not a single product
-A">
+<meta name="description" content="Collaborative Filtering
+Collaborative Filtering is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (co">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hadoop Notes">
-<meta property="og:url" content="http://yoursite.com/2017/01/21/Hadoop-Notes/index.html">
+<meta property="og:title" content="Collaborative Filtering">
+<meta property="og:url" content="http://yoursite.com/2017/02/04/Collaborative-Filtering/index.html">
 <meta property="og:site_name" content="Rui's Blog">
-<meta property="og:description" content="Objectives
-
-Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目
-机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么
-找到data science常见面试题集
-
-
-What Is Hadoop?
-
-Not a single product
-A">
-<meta property="og:image" content="http://yoursite.com/images/Big+Data+and+Hadoop+Training+Hadoop+Components+and+Architecture_1.png">
-<meta property="og:updated_time" content="2017-02-04T04:22:20.000Z">
+<meta property="og:description" content="Collaborative Filtering
+Collaborative Filtering is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (co">
+<meta property="og:updated_time" content="2017-02-05T05:12:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hadoop Notes">
-<meta name="twitter:description" content="Objectives
-
-Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目
-机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么
-找到data science常见面试题集
-
-
-What Is Hadoop?
-
-Not a single product
-A">
-<meta name="twitter:image" content="http://yoursite.com/images/Big+Data+and+Hadoop+Training+Hadoop+Components+and+Architecture_1.png">
+<meta name="twitter:title" content="Collaborative Filtering">
+<meta name="twitter:description" content="Collaborative Filtering
+Collaborative Filtering is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (co">
 
 
 
@@ -153,13 +124,13 @@ A">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/21/Hadoop-Notes/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/04/Collaborative-Filtering/"/>
 
 
 
 
 
-  <title> Hadoop Notes | Rui's Blog </title>
+  <title> Collaborative Filtering | Rui's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +253,7 @@ A">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/21/Hadoop-Notes/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/04/Collaborative-Filtering/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Rita Hu">
@@ -306,7 +277,7 @@ A">
             
             
               
-                Hadoop Notes
+                Collaborative Filtering
               
             
           </h1>
@@ -321,8 +292,8 @@ A">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-21T16:10:46-06:00">
-                2017-01-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T22:59:44-06:00">
+                2017-02-04
               </time>
             
 
@@ -379,79 +350,48 @@ A">
       
 
       
-        <h1 id="Objectives"><a href="#Objectives" class="headerlink" title="Objectives"></a>Objectives</h1><blockquote>
+        <h1 id="Collaborative-Filtering"><a href="#Collaborative-Filtering" class="headerlink" title="Collaborative Filtering"></a>Collaborative Filtering</h1><blockquote>
+<p><strong>Collaborative Filtering</strong> is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (collaborating). </p>
+</blockquote>
+<h2 id="1-Types"><a href="#1-Types" class="headerlink" title="1. Types"></a>1. Types</h2><h3 id="1-1-Memory-based"><a href="#1-1-Memory-based" class="headerlink" title="1.1 Memory-based"></a>1.1 Memory-based</h3><h4 id="1-1-1-User-based-Collaborative-Filtering"><a href="#1-1-1-User-based-Collaborative-Filtering" class="headerlink" title="1.1.1 User-based Collaborative Filtering"></a>1.1.1 User-based Collaborative Filtering</h4><blockquote>
 <ol>
-<li>Hadoop的基本构成，运行原理和涉及Hadoop的面试有什么类型的题目</li>
-<li>机器学习常见算法（Classification and Regression) 每一种算法的定义、优缺点、输入输出、适合哪一类数据 python上要用的库是什么 命令行是什么</li>
-<li>找到data science常见面试题集</li>
+<li>Look for users who share the same rating patterns with the active user (the user whom the prediction is for).</li>
+<li>Use the ratings from those like-minded users found in step 1 to calculate a prediction for the active user.<br>A specific application of this is the user-based Nearest Neighbor algorithm.</li>
 </ol>
 </blockquote>
-<h1 id="What-Is-Hadoop"><a href="#What-Is-Hadoop" class="headerlink" title="What Is Hadoop?"></a>What Is Hadoop?</h1><blockquote>
-<ul>
-<li>Not a single product</li>
-<li>A collection of applications</li>
-<li>A framework or platform</li>
-<li>Consists of several modules </li>
-</ul>
-</blockquote>
-<p><strong>Components</strong></p>
-<blockquote>
-<ul>
-<li>HDFS</li>
-<li>MapReduce</li>
-<li>Pig</li>
-<li>Hive</li>
-<li>Additional Components</li>
-</ul>
-</blockquote>
-<p><img src="/images/Big+Data+and+Hadoop+Training+Hadoop+Components+and+Architecture_1.png" alt=""><br>Image Credit: mssqpltips.com</p>
-<p>Hadoop框架中最核心的设计就是：MapReduce和HDFS</p>
-<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><p>The Hadoop Distributed File System, used to store many files across many computers.<br>HDFS是分布式计算的存储基石<br><strong>HDFS</strong></p>
-<blockquote>
+<p>Another form of collaborative filtering can be based on implicit observations of normal user behavior (as opposed to the artificial behavior imposed by a rating task). </p>
+<p>Typical examples of this approach are neighbourhood-based CF and item-based/user-based top-N recommendations. </p>
+<h3 id="1-2-Model-based"><a href="#1-2-Model-based" class="headerlink" title="1.2 Model-based"></a>1.2 Model-based</h3><h4 id="1-1-2-Item-based-Collaborative-Filtering"><a href="#1-1-2-Item-based-Collaborative-Filtering" class="headerlink" title="1.1.2 Item-based Collaborative Filtering"></a>1.1.2 Item-based Collaborative Filtering</h4><blockquote>
 <ol>
-<li>NameNode：管理者，管理文件系统的命名空间、集群配置信息和存储块的复制</li>
-<li>DataNode: 文件存储的基本单元，将Block存储在本地文件系统中，保存了Block的Meta-data，同时周期性地将所有存在的Block信息发送给NameNode</li>
-<li>Client： 获取分布式文件系统文件的应用程序</li>
+<li>Build an item-item matrix determining relationships between pairs of items.</li>
+<li>Infer the tastes of the current user by examining the matrix and matching that user’s data.</li>
 </ol>
 </blockquote>
-<p><strong>三者之间的关系</strong><br>文件写入</p>
-<blockquote>
+<h3 id="1-3-Hybrid"><a href="#1-3-Hybrid" class="headerlink" title="1.3 Hybrid"></a>1.3 Hybrid</h3><h2 id="2-Algorithm"><a href="#2-Algorithm" class="headerlink" title="2. Algorithm"></a>2. Algorithm</h2><h3 id="2-1-Item-based-Collaborative-Filtering-Algorithm"><a href="#2-1-Item-based-Collaborative-Filtering-Algorithm" class="headerlink" title="2.1 Item-based Collaborative Filtering Algorithm"></a>2.1 Item-based Collaborative Filtering Algorithm</h3><blockquote>
 <ol>
-<li>Client向NameNode发起文件写入的请求</li>
-<li>NameNode根据文件大小和文件块配置情况，返回给Client它所管理部分DataNode的信息</li>
-<li>Client将文件划分为多个Block，根据DataNode的地址信息，按顺序写入到每一个DataNode块中</li>
+<li>Similarity Computation</li>
+<li>Prediction Generation</li>
 </ol>
 </blockquote>
-<p>这就好像我要给xx公司送货，我就给总部提出送货申请，总部就会把下面厂的信息告诉我，然后我把这些货一个个给那些厂送过去。</p>
-<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>MapReduce “任务的分解与结果的汇总”<br>Map splits a task into pieces. 将一个任务分解成为多个任务<br>Reduce combines the output. 将分解后多任务处理的结果汇总起来</p>
-<p><strong>Notes:</strong> The Original MapReduce program has been replaced by YARN(Yet Another Resource Negotiator).</p>
-<h2 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h2><h2 id="Pig"><a href="#Pig" class="headerlink" title="Pig"></a>Pig</h2><blockquote>
+<p><strong>How to Compute Similarity</strong></p>
 <ul>
-<li>Writes MapReduce programs</li>
-<li>Uses the Pig Latin language</li>
+<li>Cosine-based Similarity<br>Drawback: the differences in rating scale between different users are not taken into account.</li>
+<li>Correlation-based Similarity</li>
+<li>Adjusted Cosine Similarity<br>Offsets this drawback by subtracting the corresponding user average from each co-rated pair.</li>
 </ul>
-</blockquote>
-<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><blockquote>
+<p><strong>How to Compute Prediction</strong></p>
 <ul>
-<li>Summarizes queries</li>
-<li>Analyzes data</li>
-<li>Uses the HiveQL language</li>
+<li>Weighted Sum</li>
+<li>Regression</li>
 </ul>
-</blockquote>
-<h2 id="Additional-Components"><a href="#Additional-Components" class="headerlink" title="Additional Components"></a>Additional Components</h2><blockquote>
-<ul>
-<li>HBase: a no SQL database</li>
-<li>Storm: allows the processing of streaming data in Hadoop</li>
-<li>Spark: allows in memory processing (much faster than on disk processing</li>
-<li>Giraph: for social network data </li>
-</ul>
-</blockquote>
-<p>使用场景：海量数据的分析</p>
-<h1 id="What-to-do-next"><a href="#What-to-do-next" class="headerlink" title="What to do next?"></a>What to do next?</h1><ol>
-<li>看Hadoop熟悉Pig和Hive语法</li>
+<p>Item-item similarity is computed by looking into co-rated items only.</p>
+<p><strong>Core Codes</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">## Adjusted Cosine Similarity</div><div class="line">adj_cos_similarity&lt;-function(ij,R)&#123;</div><div class="line">  co_index&lt;-apply(is.na(R[,ij]),1,sum)==0</div><div class="line">  S&lt;-R[co_index,ij]</div><div class="line">  R[is.na(R)]=0</div><div class="line">  a&lt;-sweep(S,1,apply(R,1,mean)[co_index])[,1]</div><div class="line">  b&lt;-sweep(S,1,apply(R,1,mean)[co_index])[,2]</div><div class="line">  return(sum(a*b)/(sqrt(sum(a^2))*sqrt(sum(b^2))))</div><div class="line">&#125;</div><div class="line">## Prediction Computation</div><div class="line">user_rating_prediction&lt;-function(u_index, R, k, r)&#123;</div><div class="line">  predict_index&lt;-which(is.na(R[u_index,]))</div><div class="line">  rated_index&lt;-which(!is.na(R[u_index,]))</div><div class="line">  pred_computation&lt;-function(pred_i,u_index,k)&#123;</div><div class="line">    i&lt;-dim(R)[2]</div><div class="line">    comb&lt;-t(combn(c(pred_i,rated_index),2))</div><div class="line">    ij&lt;-matrix(comb[apply(comb==pred_i,1,sum)!=0],ncol=2)</div><div class="line">    sim&lt;-apply(ij,1,adj_cos_similarity,R)</div><div class="line">    sim_index&lt;-order(sim,decreasing=T) [1:k]</div><div class="line">    a&lt;-sum(abs(sim[sim_index]))</div><div class="line">    b&lt;-sum(sim[sim_index]*R[u_index,ij[sim_index,2]])</div><div class="line">    return(a/b)</div><div class="line">  &#125;</div><div class="line">  user_pred&lt;-rep(0,i)</div><div class="line">  user_pred[predict_index]&lt;-apply(as.matrix(predict_index,ncol=1),1,pred_computation,u_index,k)</div><div class="line">  return(list(user_prediction=user_pred,movie_recommend=colnames(R)[order(user_pred,decreasing = T)[1:r]]))</div><div class="line">&#125;</div></pre></td></tr></table></figure> </p>
+<p><strong>疑问</strong></p>
+<ol>
+<li>怎么知道评分是0的是没打分还是没买过啊</li>
 </ol>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
-<li><a href="http://www.infoq.com/cn/articles/hadoop-intro" target="_blank" rel="external">http://www.infoq.com/cn/articles/hadoop-intro</a></li>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href="https://en.wikipedia.org/wiki/Collaborative_filtering" target="_blank" rel="external">https://en.wikipedia.org/wiki/Collaborative_filtering</a></li>
 </ol>
 
       
@@ -476,7 +416,11 @@ A">
       
         <div class="post-tags">
           
-            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+            <a href="/tags/Interview/" rel="tag"># Interview</a>
+          
+            <a href="/tags/Code-Demo/" rel="tag"># Code Demo</a>
           
         </div>
       
@@ -485,8 +429,8 @@ A">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/16/Hadoop-Introduction/" rel="next" title="Hadoop 2.7.2 Installation on Mac">
-                <i class="fa fa-chevron-left"></i> Hadoop 2.7.2 Installation on Mac
+              <a href="/2017/02/04/Recommendation-System/" rel="next" title="Recommendation System">
+                <i class="fa fa-chevron-left"></i> Recommendation System
               </a>
             
           </div>
@@ -494,10 +438,6 @@ A">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/22/Machine-Learning-Algorithm/" rel="prev" title="Machine Learning Algorithm">
-                Machine Learning Algorithm <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -620,7 +560,7 @@ A">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Objectives"><span class="nav-number">1.</span> <span class="nav-text">Objectives</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-Is-Hadoop"><span class="nav-number">2.</span> <span class="nav-text">What Is Hadoop?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS"><span class="nav-number">2.1.</span> <span class="nav-text">HDFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce"><span class="nav-number">2.2.</span> <span class="nav-text">MapReduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN"><span class="nav-number">2.3.</span> <span class="nav-text">YARN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pig"><span class="nav-number">2.4.</span> <span class="nav-text">Pig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hive"><span class="nav-number">2.5.</span> <span class="nav-text">Hive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Additional-Components"><span class="nav-number">2.6.</span> <span class="nav-text">Additional Components</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#What-to-do-next"><span class="nav-number">3.</span> <span class="nav-text">What to do next?</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">4.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collaborative-Filtering"><span class="nav-number">1.</span> <span class="nav-text">Collaborative Filtering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Types"><span class="nav-number">1.1.</span> <span class="nav-text">1. Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Memory-based"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Memory-based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-User-based-Collaborative-Filtering"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.1.1 User-based Collaborative Filtering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Model-based"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Model-based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-Item-based-Collaborative-Filtering"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.1.2 Item-based Collaborative Filtering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Hybrid"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Hybrid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">2. Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Item-based-Collaborative-Filtering-Algorithm"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Item-based Collaborative Filtering Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.3.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
             
 
           </div>

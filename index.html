@@ -251,6 +251,379 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/04/Collaborative-Filtering/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rita Hu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/a1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Rui's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Rui's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/04/Collaborative-Filtering/" itemprop="url">
+                  Collaborative Filtering
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T22:59:44-06:00">
+                2017-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Collaborative-Filtering"><a href="#Collaborative-Filtering" class="headerlink" title="Collaborative Filtering"></a>Collaborative Filtering</h1><blockquote>
+<p><strong>Collaborative Filtering</strong> is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (collaborating). </p>
+</blockquote>
+<h2 id="1-Types"><a href="#1-Types" class="headerlink" title="1. Types"></a>1. Types</h2><h3 id="1-1-Memory-based"><a href="#1-1-Memory-based" class="headerlink" title="1.1 Memory-based"></a>1.1 Memory-based</h3><h4 id="1-1-1-User-based-Collaborative-Filtering"><a href="#1-1-1-User-based-Collaborative-Filtering" class="headerlink" title="1.1.1 User-based Collaborative Filtering"></a>1.1.1 User-based Collaborative Filtering</h4><blockquote>
+<ol>
+<li>Look for users who share the same rating patterns with the active user (the user whom the prediction is for).</li>
+<li>Use the ratings from those like-minded users found in step 1 to calculate a prediction for the active user.<br>A specific application of this is the user-based Nearest Neighbor algorithm.</li>
+</ol>
+</blockquote>
+<p>Another form of collaborative filtering can be based on implicit observations of normal user behavior (as opposed to the artificial behavior imposed by a rating task). </p>
+<p>Typical examples of this approach are neighbourhood-based CF and item-based/user-based top-N recommendations. </p>
+<h3 id="1-2-Model-based"><a href="#1-2-Model-based" class="headerlink" title="1.2 Model-based"></a>1.2 Model-based</h3><h4 id="1-1-2-Item-based-Collaborative-Filtering"><a href="#1-1-2-Item-based-Collaborative-Filtering" class="headerlink" title="1.1.2 Item-based Collaborative Filtering"></a>1.1.2 Item-based Collaborative Filtering</h4><blockquote>
+<ol>
+<li>Build an item-item matrix determining relationships between pairs of items.</li>
+<li>Infer the tastes of the current user by examining the matrix and matching that user’s data.</li>
+</ol>
+</blockquote>
+<h3 id="1-3-Hybrid"><a href="#1-3-Hybrid" class="headerlink" title="1.3 Hybrid"></a>1.3 Hybrid</h3><h2 id="2-Algorithm"><a href="#2-Algorithm" class="headerlink" title="2. Algorithm"></a>2. Algorithm</h2><h3 id="2-1-Item-based-Collaborative-Filtering-Algorithm"><a href="#2-1-Item-based-Collaborative-Filtering-Algorithm" class="headerlink" title="2.1 Item-based Collaborative Filtering Algorithm"></a>2.1 Item-based Collaborative Filtering Algorithm</h3><blockquote>
+<ol>
+<li>Similarity Computation</li>
+<li>Prediction Generation</li>
+</ol>
+</blockquote>
+<p><strong>How to Compute Similarity</strong></p>
+<ul>
+<li>Cosine-based Similarity<br>Drawback: the differences in rating scale between different users are not taken into account.</li>
+<li>Correlation-based Similarity</li>
+<li>Adjusted Cosine Similarity<br>Offsets this drawback by subtracting the corresponding user average from each co-rated pair.</li>
+</ul>
+<p><strong>How to Compute Prediction</strong></p>
+<ul>
+<li>Weighted Sum</li>
+<li>Regression</li>
+</ul>
+<p>Item-item similarity is computed by looking into co-rated items only.</p>
+<p><strong>Core Codes</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">## Adjusted Cosine Similarity</div><div class="line">adj_cos_similarity&lt;-function(ij,R)&#123;</div><div class="line">  co_index&lt;-apply(is.na(R[,ij]),1,sum)==0</div><div class="line">  S&lt;-R[co_index,ij]</div><div class="line">  R[is.na(R)]=0</div><div class="line">  a&lt;-sweep(S,1,apply(R,1,mean)[co_index])[,1]</div><div class="line">  b&lt;-sweep(S,1,apply(R,1,mean)[co_index])[,2]</div><div class="line">  return(sum(a*b)/(sqrt(sum(a^2))*sqrt(sum(b^2))))</div><div class="line">&#125;</div><div class="line">## Prediction Computation</div><div class="line">user_rating_prediction&lt;-function(u_index, R, k, r)&#123;</div><div class="line">  predict_index&lt;-which(is.na(R[u_index,]))</div><div class="line">  rated_index&lt;-which(!is.na(R[u_index,]))</div><div class="line">  pred_computation&lt;-function(pred_i,u_index,k)&#123;</div><div class="line">    i&lt;-dim(R)[2]</div><div class="line">    comb&lt;-t(combn(c(pred_i,rated_index),2))</div><div class="line">    ij&lt;-matrix(comb[apply(comb==pred_i,1,sum)!=0],ncol=2)</div><div class="line">    sim&lt;-apply(ij,1,adj_cos_similarity,R)</div><div class="line">    sim_index&lt;-order(sim,decreasing=T) [1:k]</div><div class="line">    a&lt;-sum(abs(sim[sim_index]))</div><div class="line">    b&lt;-sum(sim[sim_index]*R[u_index,ij[sim_index,2]])</div><div class="line">    return(a/b)</div><div class="line">  &#125;</div><div class="line">  user_pred&lt;-rep(0,i)</div><div class="line">  user_pred[predict_index]&lt;-apply(as.matrix(predict_index,ncol=1),1,pred_computation,u_index,k)</div><div class="line">  return(list(user_prediction=user_pred,movie_recommend=colnames(R)[order(user_pred,decreasing = T)[1:r]]))</div><div class="line">&#125;</div></pre></td></tr></table></figure> </p>
+<p><strong>疑问</strong></p>
+<ol>
+<li>怎么知道评分是0的是没打分还是没买过啊</li>
+</ol>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href="https://en.wikipedia.org/wiki/Collaborative_filtering" target="_blank" rel="external">https://en.wikipedia.org/wiki/Collaborative_filtering</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/04/Recommendation-System/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rita Hu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/a1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Rui's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Rui's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/02/04/Recommendation-System/" itemprop="url">
+                  Recommendation System
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T15:02:39-06:00">
+                2017-02-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Recommendation-System"><a href="#Recommendation-System" class="headerlink" title="Recommendation System"></a>Recommendation System</h1><h2 id="1-Concept"><a href="#1-Concept" class="headerlink" title="1. Concept"></a>1. Concept</h2><blockquote>
+<p>Recommender systems are a subclass of information filtering system that seek to <strong>predict the “rating” or “preference” that a user would give to an item</strong>.</p>
+</blockquote>
+<h2 id="2-Approaches"><a href="#2-Approaches" class="headerlink" title="2. Approaches"></a>2. Approaches</h2><h3 id="2-1-Collaborative-filtering"><a href="#2-1-Collaborative-filtering" class="headerlink" title="2.1 Collaborative filtering"></a>2.1 Collaborative filtering</h3><blockquote>
+<p>Collaborative filtering methods are based on collecting and analyzing a large amount of information on users’ behaviors, activities or preferences and <strong>predicting what users will like based on their similarity to other users</strong>. </p>
+</blockquote>
+<p><strong>Advantages</strong><br>A distinct advantage of collaborative filtering is its broad applicability; collaborative filtering algorithms don’t need to understand the essence of a particular item, and are capable of accurately recommending a wide range of products. Further, collaborative filtering allows brands to enable serendipity shopping for their consumers by presenting items they would not have necessarily sought to purchase.</p>
+<p><strong>How to measure user similarity?</strong><br>The k-nearest neighbor (k-NN) approach or the Pearson Correlation.</p>
+<p><strong>Data Collection</strong><br>When building a model from a user’s behavior, a distinction is often made between explicit and implicit forms of data collection.<br>explicit就是公开收集，implicit就是默默<del>视奸</del>收集<br>Examples of explicit data collection include the following:</p>
+<ul>
+<li>Asking a user to rate an item on a sliding scale.</li>
+<li>Asking a user to search.</li>
+<li>Asking a user to rank a collection of items from favorite to least favorite.</li>
+<li>Presenting two items to a user and asking him/her to choose the better one of them.</li>
+<li>Asking a user to create a list of items that he/she likes.</li>
+</ul>
+<p>Examples of implicit data collection include the following:</p>
+<ul>
+<li>Observing the items that a user views in an online store.</li>
+<li>Analyzing item/user viewing times.</li>
+<li>Keeping a record of the items that a user purchases online.</li>
+<li>Obtaining a list of items that a user has listened to or watched on his/her computer.</li>
+<li>Analyzing the user’s social network and discovering similar likes and dislikes.</li>
+</ul>
+<p><strong>Problems</strong><br>Collaborative filtering approaches often suffer from three problems: <strong>cold start</strong>, <strong>scalability</strong>, and <strong>sparsity</strong>.</p>
+<ul>
+<li>Cold start: These systems often require a large amount of existing data on a user in order to make accurate recommendations.</li>
+<li>Scalability: In many of the environments in which these systems make recommendations, there are millions of users and products. Thus, a large amount of computation power is often necessary to calculate recommendations.</li>
+<li>Sparsity: The number of items sold on major e-commerce sites is extremely large. The most active users will only have rated a small subset of the overall database. Thus, even the most popular items have very few ratings.</li>
+</ul>
+<p>A particular type of collaborative filtering algorithm uses <strong>matrix factorization</strong>, a low-rank matrix approximation technique.</p>
+<p>For more detailed in <strong>Collaborative Filtering</strong>, please go to the article <strong>Collaborative Filtering</strong>.</p>
+<h3 id="2-2-Content-based-filtering"><a href="#2-2-Content-based-filtering" class="headerlink" title="2.2 Content-based filtering"></a>2.2 Content-based filtering</h3><blockquote>
+<p>Content-based filtering methods are based on a description of the item and a profile of the user’s preference. In other words, these algorithms try to recommend items that are similar to those that a user liked in the past (or is examining in the present).<br>它的核心思想是根据推荐物品或内容的元数据，发现物品或者内容的相关性，然后基于用户以往的喜好记录，推荐给用户相似的物品。</p>
+</blockquote>
+<p><strong>How to abstract the features of the items</strong><br>A widely used algorithm is the tf–idf representation (also called vector space representation).</p>
+<p>To create a user profile, the system mostly focuses on two types of information: 1. A model of the user’s preference. 2. A history of the user’s interaction with the recommender system.</p>
+<p>Basically, these methods use an item profile (i.e., a set of discrete attributes and features) characterizing the item within the system. The system creates a content-based profile of users based on a weighted vector of item features. The weights denote the importance of each feature to the user and can be computed from individually rated content vectors using a variety of techniques. Simple approaches use the average values of the rated item vector while other sophisticated methods use machine learning techniques such as Bayesian Classifiers, cluster analysis, decision trees, and artificial neural networks in order to estimate the probability that the user is going to like the item.</p>
+<h3 id="2-3-Hybrid-recommender-systems"><a href="#2-3-Hybrid-recommender-systems" class="headerlink" title="2.3 Hybrid recommender systems"></a>2.3 Hybrid recommender systems</h3><p>A hybrid recommender system is one that combines multiple techniques together to achieve some synergy between them.</p>
+<ul>
+<li>Collaborative: The system generates recommendations using only information about rating profiles for different users. Collaborative systems locate peer users with a rating history similar to the current user and generate recommendations using this neighborhood.<br>也就是说先基于内容一致得到weighted feature向量，在通过CF找向量相似的user做推荐。</li>
+<li>Content-based: The system generates recommendations from two sources: the features associated with products and the ratings that a user has given them. Content-based recommenders treat recommendation as a user-specific classification problem and learn a classifier for the user’s likes and dislikes based on product features.</li>
+<li>Demographic: A demographic recommender provides recommendations based on a demographic profile of the user. Recommended products can be produced for different demographic niches, by combining the ratings of users in those niches.</li>
+<li>Knowledge-based: A knowledge-based recommender suggests products based on inferences about a user’s needs and preferences. This knowledge will sometimes contain explicit functional knowledge about how certain product features meet user needs.</li>
+</ul>
+<h2 id="3-Recommender-system-evaluation"><a href="#3-Recommender-system-evaluation" class="headerlink" title="3. Recommender system evaluation"></a>3. Recommender system evaluation</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
+<li><a href="https://en.wikipedia.org/wiki/Recommender_system" target="_blank" rel="external">https://en.wikipedia.org/wiki/Recommender_system</a></li>
+<li><a href="https://www.dynamicyield.com/glossary/collaborative-filtering/" target="_blank" rel="external">https://www.dynamicyield.com/glossary/collaborative-filtering/</a></li>
+<li><a href="https://nychent.gitbooks.io/movie-rating-with-collaborative-filtering/content/02prerequisites/Recommender.html" target="_blank" rel="external">https://nychent.gitbooks.io/movie-rating-with-collaborative-filtering/content/02prerequisites/Recommender.html</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/03/Song-Lists/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -354,7 +727,7 @@
         
           
             <p>一直有个梦想，有了自己的车以后，要在自己车上放自己喜欢的歌【嘤嘤嘤<br>列个歌单好了<br>要不要分类呀<br>至少分个中英文好了</p>
-<p><strong>英语</strong><br>The Who-Behind Blue Eyes<br>Bee Gees-Spicks and Specks<br>Jason Mraz-I won’t Give Up<br>Family of the Year-Hero<br>Hozier-Angel Of Small Death &amp; The Codeine Scene<br>Glass Animals-Gooey<br>A Great Big World-Everyone is Gay<br>My Chemical Romance-Teenagers<br>Muse-Starlight<br>Muse-Unintended<br>The Kills-Future Starts Slow<br>Daughter-Medicine<br>Thirteen Senses-A Strange Encounter<br>The Fray-How to Save A Life<br>Johnny Cash-Hurt<br>Radiohead-Exit Music(For a Film)<br>Passenger-Let Her Go</p>
+<p><strong>英语</strong><br>The Who-Behind Blue Eyes<br>Bee Gees-Spicks and Specks<br>Jason Mraz-I won’t Give Up<br>Family of the Year-Hero<br>Hozier-Angel Of Small Death &amp; The Codeine Scene<br>Glass Animals-Gooey<br>A Great Big World-Everyone is Gay<br>My Chemical Romance-Teenagers<br>Muse-Starlight<br>Muse-Unintended<br>The Kills-Future Starts Slow<br>Daughter-Medicine<br>Thirteen Senses-A Strange Encounter<br>The Fray-How to Save A Life<br>Johnny Cash-Hurt<br>Radiohead-Exit Music(For a Film)<br>Passenger-Let Her Go<br>The Offspring-Why Don’t You Get A Job<br>Linkin Park-Leave Out All The Rest</p>
 <p><strong>华语</strong><br>Hush!-第三人称<br>麦浚龙-罗生门<br>方力申-好好恋爱<br>朴树-在木星<br>Beyond-灰色轨迹<br>天与地-年少无知<br>高旗&amp;超载乐队-距离<br>蓝奕邦-六月<br>蓝奕邦-蓝田金婚<br>谢安琪-年度之歌</p>
 
           
@@ -518,7 +891,175 @@
 </blockquote>
 <h1 id="单表关联"><a href="#单表关联" class="headerlink" title="单表关联"></a>单表关联</h1><p>连接的是左表的parent列和右表的child列，且左表和右表是同一个表。连接结果中除去连接的两列就是所需要的结果。MapReduce的Shuffle过程会将相同的key值放在一起，所以可以将map结果的key值设置成待连接的列，然后列中相同的值就自然会连接在一起了。在map阶段将读入数据分割成child和parent之后，会将parent设置成key，child设置成value进行输出，并作为左表；再反过来做一遍作为右表。为了区分输出中的左右表，需要在输出的value中再加上左右表的信息，如在value的String最开始处加上字符1表示左表，2表示右表。这样在map的结果中就形成了左表右表，shuffle过程中完成连接，reduce接收到连接的结果，其中每个key的value-list就包含了grandchild和grandparent关系。取出每个key的value-list进行解析，将左表中的child放入一个数组，右表中的parent放入一个数组，然后对两个数组求笛卡尔积就是最后的结果了。</p>
 <p><strong>Notes</strong><br>笛卡尔积<br>如果集合X是13个元素的点数集合，而集合Y是4个元素的花色集合，则这两个集合的笛卡儿积是有52个元素的标准扑克牌的集合。</p>
-<h1 id="多表关联"><a href="#多表关联" class="headerlink" title="多表关联"></a>多表关联</h1>
+<h1 id="多表关联"><a href="#多表关联" class="headerlink" title="多表关联"></a>多表关联</h1><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
+<li>&lt;<hadoop实战第二版>&gt;.机械工业出版社</hadoop实战第二版></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/22/Naive-Bayes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Rita Hu">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/a1.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Rui's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Rui's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/01/22/Naive-Bayes/" itemprop="url">
+                  Naive Bayes
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-22T23:14:59-06:00">
+                2017-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+<h1 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h1><blockquote>
+<p>Applying <strong>Bayes’ theorem</strong> with the <strong>naive</strong> assumption of independence between every pair of features.</p>
+</blockquote>
+<p>The different naive Bayes classifiers differ mainly by the assumptions they make regarding the distribution of $P(x_i \mid y)$.</p>
+<h2 id="Gaussian-Naive-Bayes"><a href="#Gaussian-Naive-Bayes" class="headerlink" title="Gaussian Naive Bayes"></a>Gaussian Naive Bayes</h2><p>When dealing with continuous data, a typical assumption is that the continuous values associated with each class are distributed according to a Gaussian distribution. For example, suppose the training data contains a continuous attribute $x$. We first segment the data by the class, and then compute the mean and variance of $x$ in each class.</p>
+<p>Another common technique for handling continuous values is to use binning to discretize the feature values, to obtain a new set of Bernoulli-distributed features; </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</div><div class="line">iris = datasets.load_iris()</div><div class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</div><div class="line">gnb = GaussianNB()</div><div class="line">y_pred = gnb.fit(iris.data, iris.target).predict(iris.data)</div><div class="line">print(<span class="string">"Number of mislabeled points out of a total %d points : %d"</span></div><div class="line">      % (iris.data.shape[<span class="number">0</span>],(iris.target != y_pred).sum()))</div></pre></td></tr></table></figure>
+<h2 id="Multinomial-Naive-Bayes"><a href="#Multinomial-Naive-Bayes" class="headerlink" title="Multinomial Naive Bayes"></a>Multinomial Naive Bayes</h2><p>MultinomialNB implements the naive Bayes algorithm for multinomially distributed data, and is one of the two classic naive Bayes variants used in text classification (where the data are typically represented as word vector counts, although tf-idf vectors are also known to work well in practice)</p>
+<p>The multinomial naive Bayes classifier becomes a linear classifier when expressed in log-space.</p>
+<p>If a given class and feature value never occur together in the training data, then the frequency-based probability estimate will be zero. This is problematic because it will wipe out all information in the other probabilities when they are multiplied. Therefore, it is often desirable to incorporate a small-sample correction, called pseudocount, in all probability estimates such that no probability is ever set to be exactly zero. This way of regularizing naive Bayes is called Laplace smoothing when the pseudocount is one, and Lidstone smoothing in the general case.</p>
+<p>If categorical variable has a category (in test data set), which was not observed in training data set, then model will assign a 0 (zero) probability and will be unable to make a prediction. This is often known as “Zero Frequency”. To solve this, we can use the smoothing technique. One of the simplest smoothing techniques is called Laplace estimation.</p>
+<p>Rennie et al. discuss problems with the multinomial assumption in the context of document classification and possible ways to alleviate those problems, including the use of tf–idf weights instead of raw term frequencies and document length normalization, to produce a naive Bayes classifier that is competitive with support vector machines.</p>
+<h2 id="Bernoulli-Naive-Bayes"><a href="#Bernoulli-Naive-Bayes" class="headerlink" title="Bernoulli Naive Bayes"></a>Bernoulli Naive Bayes</h2><p>BernoulliNB implements the naive Bayes training and classification algorithms for data that is distributed according to multivariate Bernoulli distributions; i.e., there may be multiple features but each one is assumed to be a binary-valued (Bernoulli, boolean) variable. Therefore, this class requires samples to be represented as binary-valued feature vectors;</p>
+<p>In the case of text classification, <strong>word occurrence</strong> vectors (rather than <strong>word count</strong> vectors) may be used to train and use this classifier. BernoulliNB might perform better on some datasets, especially those with shorter documents. It is advisable to evaluate both models, if time permits.</p>
+<h2 id="Out-of-core-naive-Bayes-model-fitting"><a href="#Out-of-core-naive-Bayes-model-fitting" class="headerlink" title="Out-of-core naive Bayes model fitting"></a>Out-of-core naive Bayes model fitting</h2><p><a href="http://scikit-learn.org/stable/auto_examples/applications/plot_out_of_core_classification.html#sphx-glr-auto-examples-applications-plot-out-of-core-classification-py" target="_blank" rel="external">Out-of-core classification of text documents</a></p>
+
           
         
       
@@ -836,171 +1377,6 @@
 <h3 id="9-5-Codes"><a href="#9-5-Codes" class="headerlink" title="9.5 Codes"></a>9.5 Codes</h3><p><strong>Python</strong><br>Libraries: Sci-Kit Learn</p>
 <p><strong>R</strong><br>Libraries: randomForest</p>
 <h2 id="10-Nearest-Neighbours"><a href="#10-Nearest-Neighbours" class="headerlink" title="10. Nearest Neighbours"></a>10. Nearest Neighbours</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/01/22/Naive-Bayes/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="Rita Hu">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/a1.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Rui's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Rui's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/01/22/Naive-Bayes/" itemprop="url">
-                  Naive Bayes
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-22T23:14:59-06:00">
-                2017-01-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Notes/" itemprop="url" rel="index">
-                    <span itemprop="name">Notes</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-<h1 id="Naive-Bayes"><a href="#Naive-Bayes" class="headerlink" title="Naïve Bayes"></a>Naïve Bayes</h1><blockquote>
-<p>Applying <strong>Bayes’ theorem</strong> with the <strong>naive</strong> assumption of independence between every pair of features.</p>
-</blockquote>
-<p>The different naive Bayes classifiers differ mainly by the assumptions they make regarding the distribution of $P(x_i \mid y)$.</p>
-<h2 id="Gaussian-Naive-Bayes"><a href="#Gaussian-Naive-Bayes" class="headerlink" title="Gaussian Naive Bayes"></a>Gaussian Naive Bayes</h2><p>When dealing with continuous data, a typical assumption is that the continuous values associated with each class are distributed according to a Gaussian distribution. For example, suppose the training data contains a continuous attribute $x$. We first segment the data by the class, and then compute the mean and variance of $x$ in each class.</p>
-<p>Another common technique for handling continuous values is to use binning to discretize the feature values, to obtain a new set of Bernoulli-distributed features; </p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> datasets</div><div class="line">iris = datasets.load_iris()</div><div class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</div><div class="line">gnb = GaussianNB()</div><div class="line">y_pred = gnb.fit(iris.data, iris.target).predict(iris.data)</div><div class="line">print(<span class="string">"Number of mislabeled points out of a total %d points : %d"</span></div><div class="line">      % (iris.data.shape[<span class="number">0</span>],(iris.target != y_pred).sum()))</div></pre></td></tr></table></figure>
-<h2 id="Multinomial-Naive-Bayes"><a href="#Multinomial-Naive-Bayes" class="headerlink" title="Multinomial Naive Bayes"></a>Multinomial Naive Bayes</h2><p>MultinomialNB implements the naive Bayes algorithm for multinomially distributed data, and is one of the two classic naive Bayes variants used in text classification (where the data are typically represented as word vector counts, although tf-idf vectors are also known to work well in practice)</p>
-<p>The multinomial naive Bayes classifier becomes a linear classifier when expressed in log-space.</p>
-<p>If a given class and feature value never occur together in the training data, then the frequency-based probability estimate will be zero. This is problematic because it will wipe out all information in the other probabilities when they are multiplied. Therefore, it is often desirable to incorporate a small-sample correction, called pseudocount, in all probability estimates such that no probability is ever set to be exactly zero. This way of regularizing naive Bayes is called Laplace smoothing when the pseudocount is one, and Lidstone smoothing in the general case.</p>
-<p>If categorical variable has a category (in test data set), which was not observed in training data set, then model will assign a 0 (zero) probability and will be unable to make a prediction. This is often known as “Zero Frequency”. To solve this, we can use the smoothing technique. One of the simplest smoothing techniques is called Laplace estimation.</p>
-<p>Rennie et al. discuss problems with the multinomial assumption in the context of document classification and possible ways to alleviate those problems, including the use of tf–idf weights instead of raw term frequencies and document length normalization, to produce a naive Bayes classifier that is competitive with support vector machines.</p>
-<h2 id="Bernoulli-Naive-Bayes"><a href="#Bernoulli-Naive-Bayes" class="headerlink" title="Bernoulli Naive Bayes"></a>Bernoulli Naive Bayes</h2><p>BernoulliNB implements the naive Bayes training and classification algorithms for data that is distributed according to multivariate Bernoulli distributions; i.e., there may be multiple features but each one is assumed to be a binary-valued (Bernoulli, boolean) variable. Therefore, this class requires samples to be represented as binary-valued feature vectors;</p>
-<p>In the case of text classification, <strong>word occurrence</strong> vectors (rather than <strong>word count</strong> vectors) may be used to train and use this classifier. BernoulliNB might perform better on some datasets, especially those with shorter documents. It is advisable to evaluate both models, if time permits.</p>
-<h2 id="Out-of-core-naive-Bayes-model-fitting"><a href="#Out-of-core-naive-Bayes-model-fitting" class="headerlink" title="Out-of-core naive Bayes model fitting"></a>Out-of-core naive Bayes model fitting</h2><p><a href="http://scikit-learn.org/stable/auto_examples/applications/plot_out_of_core_classification.html#sphx-glr-auto-examples-applications-plot-out-of-core-classification-py" target="_blank" rel="external">Out-of-core classification of text documents</a></p>
-
           
         
       
@@ -1625,7 +2001,7 @@ Hadoop Version: 2.7.2
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1643,7 +2019,7 @@ Hadoop Version: 2.7.2
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
