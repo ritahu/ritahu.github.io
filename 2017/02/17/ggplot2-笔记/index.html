@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Machine Learning,Interview,Code Demo," />
+  <meta name="keywords" content="Interview,R," />
 
 
 
@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="Collaborative Filtering
-Collaborative Filtering is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (co">
+<meta name="description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Collaborative Filtering">
-<meta property="og:url" content="http://yoursite.com/2017/02/04/Collaborative-Filtering/index.html">
+<meta property="og:title" content="ggplot2 和 dplyr 笔记">
+<meta property="og:url" content="http://yoursite.com/2017/02/17/ggplot2-笔记/index.html">
 <meta property="og:site_name" content="Rui's Blog">
-<meta property="og:description" content="Collaborative Filtering
-Collaborative Filtering is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (co">
-<meta property="og:updated_time" content="2017-02-05T05:12:31.000Z">
+<meta property="og:description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
+<meta property="og:updated_time" content="2017-02-18T02:59:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Collaborative Filtering">
-<meta name="twitter:description" content="Collaborative Filtering
-Collaborative Filtering is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (co">
+<meta name="twitter:title" content="ggplot2 和 dplyr 笔记">
+<meta name="twitter:description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
 
 
 
@@ -124,13 +121,13 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/02/04/Collaborative-Filtering/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/02/17/ggplot2-笔记/"/>
 
 
 
 
 
-  <title> Collaborative Filtering | Rui's Blog </title>
+  <title> ggplot2 和 dplyr 笔记 | Rui's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +250,7 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/04/Collaborative-Filtering/">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/17/ggplot2-笔记/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="Rita Hu">
@@ -277,7 +274,7 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
             
             
               
-                Collaborative Filtering
+                ggplot2 和 dplyr 笔记
               
             
           </h1>
@@ -292,8 +289,8 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-04T22:59:44-06:00">
-                2017-02-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-17T20:02:59-06:00">
+                2017-02-17
               </time>
             
 
@@ -350,49 +347,11 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
       
 
       
-        <h1 id="Collaborative-Filtering"><a href="#Collaborative-Filtering" class="headerlink" title="Collaborative Filtering"></a>Collaborative Filtering</h1><blockquote>
-<p><strong>Collaborative Filtering</strong> is a method of making automatic predictions (filtering) about the interests of a user by collecting preferences or taste information from many users (collaborating). </p>
-</blockquote>
-<h2 id="1-Types"><a href="#1-Types" class="headerlink" title="1. Types"></a>1. Types</h2><h3 id="1-1-Memory-based"><a href="#1-1-Memory-based" class="headerlink" title="1.1 Memory-based"></a>1.1 Memory-based</h3><h4 id="1-1-1-User-based-Collaborative-Filtering"><a href="#1-1-1-User-based-Collaborative-Filtering" class="headerlink" title="1.1.1 User-based Collaborative Filtering"></a>1.1.1 User-based Collaborative Filtering</h4><blockquote>
-<ol>
-<li>Look for users who share the same rating patterns with the active user (the user whom the prediction is for).</li>
-<li>Use the ratings from those like-minded users found in step 1 to calculate a prediction for the active user.<br>A specific application of this is the user-based Nearest Neighbor algorithm.</li>
-</ol>
-</blockquote>
-<p>Another form of collaborative filtering can be based on implicit observations of normal user behavior (as opposed to the artificial behavior imposed by a rating task). </p>
-<p>Typical examples of this approach are neighbourhood-based CF and item-based/user-based top-N recommendations. </p>
-<h3 id="1-2-Model-based"><a href="#1-2-Model-based" class="headerlink" title="1.2 Model-based"></a>1.2 Model-based</h3><h4 id="1-1-2-Item-based-Collaborative-Filtering"><a href="#1-1-2-Item-based-Collaborative-Filtering" class="headerlink" title="1.1.2 Item-based Collaborative Filtering"></a>1.1.2 Item-based Collaborative Filtering</h4><blockquote>
-<ol>
-<li>Build an item-item matrix determining relationships between pairs of items.</li>
-<li>Infer the tastes of the current user by examining the matrix and matching that user’s data.</li>
-</ol>
-</blockquote>
-<h3 id="1-3-Hybrid"><a href="#1-3-Hybrid" class="headerlink" title="1.3 Hybrid"></a>1.3 Hybrid</h3><h2 id="2-Algorithm"><a href="#2-Algorithm" class="headerlink" title="2. Algorithm"></a>2. Algorithm</h2><h3 id="2-1-Item-based-Collaborative-Filtering-Algorithm"><a href="#2-1-Item-based-Collaborative-Filtering-Algorithm" class="headerlink" title="2.1 Item-based Collaborative Filtering Algorithm"></a>2.1 Item-based Collaborative Filtering Algorithm</h3><blockquote>
-<ol>
-<li>Similarity Computation</li>
-<li>Prediction Generation</li>
-</ol>
-</blockquote>
-<p><strong>How to Compute Similarity</strong></p>
-<ul>
-<li>Cosine-based Similarity<br>Drawback: the differences in rating scale between different users are not taken into account.</li>
-<li>Correlation-based Similarity</li>
-<li>Adjusted Cosine Similarity<br>Offsets this drawback by subtracting the corresponding user average from each co-rated pair.</li>
-</ul>
-<p><strong>How to Compute Prediction</strong></p>
-<ul>
-<li>Weighted Sum</li>
-<li>Regression</li>
-</ul>
-<p>Item-item similarity is computed by looking into co-rated items only.</p>
-<p><strong>Core Codes</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">## Adjusted Cosine Similarity</div><div class="line">adj_cos_similarity&lt;-function(ij,R)&#123;</div><div class="line">  co_index&lt;-apply(is.na(R[,ij]),1,sum)==0</div><div class="line">  S&lt;-R[co_index,ij]</div><div class="line">  R[is.na(R)]=0</div><div class="line">  a&lt;-sweep(S,1,apply(R,1,mean)[co_index])[,1]</div><div class="line">  b&lt;-sweep(S,1,apply(R,1,mean)[co_index])[,2]</div><div class="line">  return(sum(a*b)/(sqrt(sum(a^2))*sqrt(sum(b^2))))</div><div class="line">&#125;</div><div class="line">## Prediction Computation</div><div class="line">user_rating_prediction&lt;-function(u_index, R, k, r)&#123;</div><div class="line">  predict_index&lt;-which(is.na(R[u_index,]))</div><div class="line">  rated_index&lt;-which(!is.na(R[u_index,]))</div><div class="line">  pred_computation&lt;-function(pred_i,u_index,k)&#123;</div><div class="line">    i&lt;-dim(R)[2]</div><div class="line">    comb&lt;-t(combn(c(pred_i,rated_index),2))</div><div class="line">    ij&lt;-matrix(comb[apply(comb==pred_i,1,sum)!=0],ncol=2)</div><div class="line">    sim&lt;-apply(ij,1,adj_cos_similarity,R)</div><div class="line">    sim_index&lt;-order(sim,decreasing=T) [1:k]</div><div class="line">    a&lt;-sum(abs(sim[sim_index]))</div><div class="line">    b&lt;-sum(sim[sim_index]*R[u_index,ij[sim_index,2]])</div><div class="line">    return(a/b)</div><div class="line">  &#125;</div><div class="line">  user_pred&lt;-rep(0,i)</div><div class="line">  user_pred[predict_index]&lt;-apply(as.matrix(predict_index,ncol=1),1,pred_computation,u_index,k)</div><div class="line">  return(list(user_prediction=user_pred,movie_recommend=colnames(R)[order(user_pred,decreasing = T)[1:r]]))</div><div class="line">&#125;</div></pre></td></tr></table></figure> </p>
-<p><strong>疑问</strong></p>
-<ol>
-<li>怎么知道评分是0的是没打分还是没买过啊</li>
-</ol>
-<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ol>
-<li><a href="https://en.wikipedia.org/wiki/Collaborative_filtering" target="_blank" rel="external">https://en.wikipedia.org/wiki/Collaborative_filtering</a></li>
-</ol>
+        <p>R里的可视化神器<code>ggplot2</code>和数据处理神器<code>dplyr</code>都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。<br>虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。<br>之前觉得<code>ggplot2</code>的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。<br>等到再要用的时候有得重新google，又要经历一遍瞎摆弄，搞得一肚子火，终于下定决心写个总结，不求画出惊世骇俗的图，能不丢统计专业的脸即可。        </p>
+<p>其实常见的统计图吧，对我来说使用频率最高的也就四种：条形图，直方图，散点图，折线（曲线）图。<br>那至于Regression Analysis中常见的correlation plot, 那有云伯伯写的配色极其好看的包<a href="https://cran.r-project.org/web/packages/corrplot/corrplot.pdf" target="_blank" rel="external"><code>corrplot</code></a>;<br>Text Mining里比较火的wordcloud也有对应的包；用来炫技的什么“用R画爱心画圣诞树画等等等”除了能辣手摧花在业界并没有什么<del>卵</del>用就不在这里赘述了。        </p>
+<p>常见的画图入门教程一般是给你一个toy example data【以及给你统计好的长得很好看很好看很整齐很适合画图的数据】【然而现实数据教你做人好吗】，然后告诉你最最基础的条形图应该怎么画，加个标题，换个<br>颜色最多加上图注横竖坐标【全剧终】你发现诶这好简单啊，果然题目叫<code>十分钟入门ggplot2</code>没有欺骗我，没错真得没骗你，你大概也就只是入了个门。再碰到一个现实生活的数据，根本不知道从何入手。<br>这经验来自一个看了无数个<code>hello world</code>教程就abandon的客户端。不是说教程没用，只是基于人的惰性，能教你做人有长进的只有task和ddl【当然如果你是一个对作业都hea下hea下的人我没话好说】</p>
+<p>我个人认为一般的绘图逻辑是这样的，针对研究的问题，想象出我应该用一个什么样的图去表达这个问题，再基于这个想象的图通过一些简单的数据处理得到画图所需的数据，最后再画图验证自己的猜想。<br>而不是老师说要加点图，我就噼里啪啦搞出一堆图塞进报告里，以量取胜【这样做的后果请看狗熊会另一网红水妈写的丑图百讲】<br>图由始至终都是支持自己论点的工具，是个辅助，不是最终目的。                </p>
+<p>结合我自己本身画图的需求，以及没有内存卡的大脑，我决心基于自己爬下来的数据，用探究问题的逻辑，写一篇ggplot2画图笔记。以备我以后复制粘贴之用。<br>因为有大量的代码和图，我很认真地想了想（大概用了5秒），觉得还是用R markdown写是最writer-friendly的【对我不care用户friendly】。</p>
 
       
     </div>
@@ -416,11 +375,9 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
-          
             <a href="/tags/Interview/" rel="tag"># Interview</a>
           
-            <a href="/tags/Code-Demo/" rel="tag"># Code Demo</a>
+            <a href="/tags/R/" rel="tag"># R</a>
           
         </div>
       
@@ -429,8 +386,8 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/02/04/Recommendation-System/" rel="next" title="Recommendation System">
-                <i class="fa fa-chevron-left"></i> Recommendation System
+              <a href="/2017/02/06/Monte-Carlo-Methods-in-R-and-Python/" rel="next" title="Monte Carlo Methods in R & Python">
+                <i class="fa fa-chevron-left"></i> Monte Carlo Methods in R & Python
               </a>
             
           </div>
@@ -438,10 +395,6 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/06/Monte-Carlo-Methods-in-R-and-Python/" rel="prev" title="Monte Carlo Methods in R & Python">
-                Monte Carlo Methods in R & Python <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -488,17 +441,8 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/a1.png"
@@ -554,22 +498,6 @@ Collaborative Filtering is a method of making automatic predictions (filtering) 
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Collaborative-Filtering"><span class="nav-number">1.</span> <span class="nav-text">Collaborative Filtering</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Types"><span class="nav-number">1.1.</span> <span class="nav-text">1. Types</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Memory-based"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 Memory-based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-User-based-Collaborative-Filtering"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">1.1.1 User-based Collaborative Filtering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Model-based"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 Model-based</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-Item-based-Collaborative-Filtering"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.1.2 Item-based Collaborative Filtering</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Hybrid"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 Hybrid</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">2. Algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Item-based-Collaborative-Filtering-Algorithm"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Item-based Collaborative Filtering Algorithm</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#References"><span class="nav-number">1.3.</span> <span class="nav-text">References</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
