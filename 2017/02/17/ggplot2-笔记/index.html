@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
+<meta name="description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的【当然我心目中的R包界第一男神必须是谢大】。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ggplot2 和 dplyr 笔记">
 <meta property="og:url" content="http://yoursite.com/2017/02/17/ggplot2-笔记/index.html">
 <meta property="og:site_name" content="Rui's Blog">
-<meta property="og:description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
-<meta property="og:updated_time" content="2017-02-18T02:59:34.000Z">
+<meta property="og:description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的【当然我心目中的R包界第一男神必须是谢大】。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
+<meta property="og:updated_time" content="2017-02-18T03:04:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ggplot2 和 dplyr 笔记">
-<meta name="twitter:description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
+<meta name="twitter:description" content="R里的可视化神器ggplot2和数据处理神器dplyr都是由男神Hadley Wickham写的【当然我心目中的R包界第一男神必须是谢大】。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得ggplot2的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时">
 
 
 
@@ -347,11 +347,11 @@
       
 
       
-        <p>R里的可视化神器<code>ggplot2</code>和数据处理神器<code>dplyr</code>都是由男神Hadley Wickham写的（当然我心目中的R包界第一男神必须是谢大）。<br>虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。<br>之前觉得<code>ggplot2</code>的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。<br>等到再要用的时候有得重新google，又要经历一遍瞎摆弄，搞得一肚子火，终于下定决心写个总结，不求画出惊世骇俗的图，能不丢统计专业的脸即可。        </p>
-<p>其实常见的统计图吧，对我来说使用频率最高的也就四种：条形图，直方图，散点图，折线（曲线）图。<br>那至于Regression Analysis中常见的correlation plot, 那有云伯伯写的配色极其好看的包<a href="https://cran.r-project.org/web/packages/corrplot/corrplot.pdf" target="_blank" rel="external"><code>corrplot</code></a>;<br>Text Mining里比较火的wordcloud也有对应的包；用来炫技的什么“用R画爱心画圣诞树画等等等”除了能辣手摧花在业界并没有什么<del>卵</del>用就不在这里赘述了。        </p>
-<p>常见的画图入门教程一般是给你一个toy example data【以及给你统计好的长得很好看很好看很整齐很适合画图的数据】【然而现实数据教你做人好吗】，然后告诉你最最基础的条形图应该怎么画，加个标题，换个<br>颜色最多加上图注横竖坐标【全剧终】你发现诶这好简单啊，果然题目叫<code>十分钟入门ggplot2</code>没有欺骗我，没错真得没骗你，你大概也就只是入了个门。再碰到一个现实生活的数据，根本不知道从何入手。<br>这经验来自一个看了无数个<code>hello world</code>教程就abandon的客户端。不是说教程没用，只是基于人的惰性，能教你做人有长进的只有task和ddl【当然如果你是一个对作业都hea下hea下的人我没话好说】</p>
-<p>我个人认为一般的绘图逻辑是这样的，针对研究的问题，想象出我应该用一个什么样的图去表达这个问题，再基于这个想象的图通过一些简单的数据处理得到画图所需的数据，最后再画图验证自己的猜想。<br>而不是老师说要加点图，我就噼里啪啦搞出一堆图塞进报告里，以量取胜【这样做的后果请看狗熊会另一网红水妈写的丑图百讲】<br>图由始至终都是支持自己论点的工具，是个辅助，不是最终目的。                </p>
-<p>结合我自己本身画图的需求，以及没有内存卡的大脑，我决心基于自己爬下来的数据，用探究问题的逻辑，写一篇ggplot2画图笔记。以备我以后复制粘贴之用。<br>因为有大量的代码和图，我很认真地想了想（大概用了5秒），觉得还是用R markdown写是最writer-friendly的【对我不care用户friendly】。</p>
+        <p>R里的可视化神器<code>ggplot2</code>和数据处理神器<code>dplyr</code>都是由男神Hadley Wickham写的【当然我心目中的R包界第一男神必须是谢大】。虽然自己写函数的能力是要有的，不能时不时都调用个包…但是男神写出那么好的包不用…那不就白瞎了嘛。之前觉得<code>ggplot2</code>的语法很繁琐，数据格式也很烦，就一直拖着能不用就不用，实在要用google一下，照葫芦画瓢瞎改改凑活用了把作业交了转眼又不会了。等到再要用的时候有得重新google，又要经历一遍瞎摆弄，搞得一肚子火，终于下定决心写个总结，不求画出惊世骇俗的图，能不丢统计专业的脸即可。        </p>
+<p>其实常见的统计图吧，对我来说使用频率最高的也就四种：条形图，直方图，散点图，折线（曲线）图。那至于Regression Analysis中常见的correlation plot, 那有云伯伯写的配色极其好看的包<a href="https://cran.r-project.org/web/packages/corrplot/corrplot.pdf" target="_blank" rel="external"><code>corrplot</code></a>;Text Mining里比较火的wordcloud也有对应的包；用来炫技的什么“用R画爱心画圣诞树画等等等”除了能辣手摧花在业界并没有什么<del>卵</del>用就不在这里赘述了。        </p>
+<p>常见的画图入门教程一般是给你一个toy example data【给你统计好的长得很好看很好看很整齐很适合画图的数据】【然而现实数据教你做人】，然后告诉你最最基础的条形图应该怎么画，加个标题，换个颜色最多加上图注横竖坐标【全剧终】你发现诶这好简单啊，果然题目叫<code>十分钟入门ggplot2</code>没有欺骗我，没错真得没骗你，你大概也就只是入了个门。再碰到一个现实生活的数据，根本不知道从何入手。这经验来自一个看了无数个<code>hello world</code>教程就abandon的客户端。不是说教程没用，只是基于人的惰性，能教你做人有长进的只有task和ddl【当然如果你是一个对作业都hea下hea下的人我没话好说】</p>
+<p>我个人认为一般的绘图逻辑是这样的，针对研究的问题，想象出我应该用一个什么样的图去表达这个问题，再基于这个想象的图通过一些简单的数据处理得到画图所需的数据，最后再画图验证自己的猜想。而不是老师说要加点图，我就噼里啪啦搞出一堆图塞进报告里，以量取胜【这样做的后果请看狗熊会另一网红水妈写的丑图百讲】图由始至终都是支持自己论点的工具，是个辅助，不是最终目的。                </p>
+<p>结合我自己本身画图的需求，以及没有内存卡的大脑，我决心基于自己爬下来的数据，用探究问题的逻辑，写一篇ggplot2画图笔记。以备我以后复制粘贴之用。因为有大量的代码和图，我很认真地想了想（大概用了5秒），觉得还是用R markdown写是最writer-friendly的【对我不care用户friendly】。</p>
 
       
     </div>
