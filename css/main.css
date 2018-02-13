@@ -1681,7 +1681,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff0f20;
+  background: #8a33fe;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2844,7 +2844,4 @@ a.search-result {
   .post-body {
     text-align: justify;
   }
-}
-body {
-  background: url("/images/AlarmedEdibleBird.gif");
 }
